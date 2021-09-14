@@ -1,16 +1,17 @@
 package main
 
 import (
-	"net/http"
-	 db "github.com/KepedulianMasyarakat/go-kemas/config"
-	"github.com/labstack/echo/v4"
+	"go-kemas/config"
+	"go-kemas/models"
+	"go-kemas/routes"
 )
 
 func main() {
-	db.Init()
-	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
-	e.Logger.Fatal(e.Start(":1323"))
+	db := config.SetupDB()
+	db.AutoMigrate(&models.Task{})
+	db.AutoMigrate(&models.Program{})
+	db.AutoMigrate(&models.Admin{})
+	db.AutoMigrate(&models.User{})
+	r := routes.SetupRoutes(db)
+  r.Run()
 }
