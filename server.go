@@ -2,7 +2,7 @@ package main
 
 import (
 	"net/http"
-	 db "config"
+	 db "github.com/KepedulianMasyarakat/go-kemas/config"
 	"github.com/labstack/echo/v4"
 )
 
