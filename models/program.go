@@ -4,6 +4,10 @@ import (
     "time"
 )
 
+type Event_instansi struct{
+    
+}
+
 type Program struct {
     ID         uint      `json:"id" gorm:"primary_key"`
     AssingedTo string    `json:"assignedTo"`
